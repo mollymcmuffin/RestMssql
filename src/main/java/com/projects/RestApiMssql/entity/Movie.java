@@ -18,12 +18,15 @@ public class Movie {
     private Long id;
     private String name;
 
+    private String genre;
+
     public Movie() {
     }
 
-    public Movie(long id, String name) {
+    public Movie(long id, String name, String genre) {
         this.id = id;
         this.name = name;
+        this.genre = genre;
     }
 
     public long getId() {
@@ -32,6 +35,14 @@ public class Movie {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getName() {
@@ -47,6 +58,7 @@ public class Movie {
         return "Movie{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
                 '}';
     }
 }

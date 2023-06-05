@@ -23,13 +23,19 @@ public class MovieController {
         return movieService.getMovies();
     }
 
+    @PostMapping
+    public void addNewMovie(@RequestBody Movie movie){
+        movieService.addNewMovie(movie);
+    }
+
+
     @DeleteMapping(path = "/{movieId}")
-    public void createNewMovie(@PathVariable("movieId") Long movieId){
+    public void deleteMovie(@PathVariable("movieId") Long movieId){
         movieService.deleteMovie(movieId);
     }
 
-    @PostMapping(path = "/{movieId}")
-    public void deleteMovie(@PathVariable("movieId") Long movieId, @RequestParam(required = false) String name ){
+    @PutMapping(path = "/{movieId}")
+    public void updateMovie(@PathVariable("movieId") Long movieId, @RequestParam(required = false) String name ){
         movieService.updateMovie(movieId, name);
     }
 
