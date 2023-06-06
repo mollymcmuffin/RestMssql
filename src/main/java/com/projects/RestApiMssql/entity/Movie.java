@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table
 public class Movie {
-    @javax.persistence.Id
+
+    @Id
     @SequenceGenerator(
             name = "movie_sequence",
             sequenceName = "movie_sequence",
@@ -15,7 +16,7 @@ public class Movie {
             strategy = GenerationType.SEQUENCE,
             generator = "movie_sequence"
     )
-    private Long id;
+    private long id;
     private String name;
 
     private String genre;
@@ -23,8 +24,13 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(long id, String name, String genre) {
+    public Movie(Long id, String name, String genre) {
         this.id = id;
+        this.name = name;
+        this.genre = genre;
+    }
+
+    public Movie( String name, String genre) {
         this.name = name;
         this.genre = genre;
     }

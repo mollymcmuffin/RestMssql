@@ -25,10 +25,10 @@ public class MovieService {
     }
 
     public void addNewMovie(Movie movie){
-        Optional<Movie> movieOptional = movieRepository.findById(movie.getId());
-        if (movieOptional.isPresent()){
-            throw new IllegalStateException("Name taken");
-        }
+//        Optional<Movie> movieOptional = movieRepository.findById(movie.getId());
+//        if (movieOptional.isPresent()){
+//            throw new IllegalStateException("Name taken");
+//        }
         movieRepository.save(movie);
     }
 
@@ -42,10 +42,16 @@ public class MovieService {
     }
 
     @Transactional
-    public void updateMovie(Long movieId, String name){
+    public void updateMovie(Long movieId, String name, String genre){
         Movie movie = movieRepository.findById(movieId).orElseThrow(()-> new IllegalStateException("Movie does not exist!"));
-        if (name != null && name.length()>0 && !Objects.equals(movie , name)){
+        if (name != null && name.length()>0 && !Objects.equals(movie.getName() , name)){
             movie.setName(name);
         }
+
+        if (genre != null && genre.length()>0 && !Objects.equals(movie.getGenre() , genre)){
+            movie.setGenre(genre);
+        }
+
+
     }
 }
